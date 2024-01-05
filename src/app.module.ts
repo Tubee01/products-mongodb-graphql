@@ -1,8 +1,11 @@
 import { ConfigModule, ConfigService, Environment } from '@libs/config';
 import { Module } from '@nestjs/common';
 import { LoggerModule } from 'nestjs-pino';
+import { YogaDriver, YogaDriverConfig } from '@graphql-yoga/nestjs';
+import { GraphQLModule } from '@nestjs/graphql';
 import { SyncModule } from './modules/sync/sync.module';
-import { CsvReaderService } from './modules/sync/csv-reader.service';
+import { ProductModule } from './modules/product/product.module';
+import { ProducerModule } from './modules/producer/producer.module';
 
 @Module({
   imports: [
@@ -24,8 +27,18 @@ import { CsvReaderService } from './modules/sync/csv-reader.service';
         },
       }),
     }),
+    GraphQLModule.forRootAsync<YogaDriverConfig>({
+      driver: YogaDriver,
+      useFactory: (configService: ConfigService) => ({
+        autoSchemaFile: configService.get('GRAPHQL_SCHEMA_FILE'),
+        playground: configService.get('NODE_ENV') === Environment.Development,
+        context: ({ req }) => ({ req }),
+      }),
+      inject: [ConfigService],
+    }),
     SyncModule,
+    ProductModule,
+    ProducerModule,
   ],
-  providers: [CsvReaderService],
 })
 export class AppModule {}

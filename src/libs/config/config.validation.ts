@@ -13,6 +13,7 @@ export const ConfigVariablesSchema = Joi.object<ConfigVariables>({
   REDIS_PASSWORD: Joi.string().default(''),
   CSV_URL: Joi.string().required(),
   BATCH_SIZE: Joi.number().default(100),
+  GRAPHQL_SCHEMA_FILE: Joi.string().default('schema.graphql'),
 }).options({
   stripUnknown: true,
   abortEarly: true,

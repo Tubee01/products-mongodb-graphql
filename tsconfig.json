@@ -25,6 +25,12 @@
       "@libs*": [
         "src/libs*"
       ],
+      "@modules/*": [
+        "src/modules/*"
+      ],
+      "@modules*": [
+        "src/modules*"
+      ],
     }
   }
 }

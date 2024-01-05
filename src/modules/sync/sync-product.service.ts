@@ -41,16 +41,17 @@ const PRODUCER_ROW_MAPPINGS: Record<keyof ValidProducerCsvRowKeys, keyof ValidPr
 export class SyncProductService {
   private readonly logger = new Logger(this.constructor.name);
 
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   async sync(rows: ProductCsvRow[]) {
     const groupedRows = this.groupByUniqueKeys(rows, ['Vintage', 'Product Name', 'Producer']);
     const productsPromises = [];
     const dbProcuders: Producer[] = [];
 
+    this.logger.debug(`Syncing ${rows.length} products`);
+
     for await (const uniqueKey of groupedRows.keys()) {
       const data = this.getAllValuesForKey(groupedRows, uniqueKey);
-
       for (const row of data) {
         const producer = this.mapRowToProducer(row);
 
@@ -114,7 +115,10 @@ export class SyncProductService {
     }, {} as T);
   }
 
-  private groupByUniqueKeys(rows: ProductCsvRow[], keys: string[]) {
+  private groupByUniqueKeys(
+    rows: ProductCsvRow[],
+    keys: (keyof ValidProductCsvRowKeys | keyof ValidProducerCsvRowKeys)[],
+  ) {
     const groupedRows = new Map<string, ProductCsvRow>();
 
     for (const row of rows) {

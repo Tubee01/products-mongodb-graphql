@@ -21,4 +21,3 @@ services:
 
     command: >
       --requirepass ${REDIS_PASSWORD}
-    restart: always

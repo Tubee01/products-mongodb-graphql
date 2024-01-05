@@ -21,4 +21,5 @@ export interface ConfigVariables
   NODE_ENV: Environment;
   APP_PORT: number;
   LOG_LEVEL: string;
+  GRAPHQL_SCHEMA_FILE: string;
 }

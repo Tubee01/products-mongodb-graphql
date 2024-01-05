@@ -5,7 +5,7 @@ import csv from 'csv-parser';
 
 interface CsvReaderOptions {
   batchSize: number;
-  processRows: (data: any) => Promise<any> | void;
+  processRows: (data: unknown) => Promise<unknown> | void;
 }
 
 @Injectable()

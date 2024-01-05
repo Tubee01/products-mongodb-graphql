@@ -19,7 +19,7 @@ export class SyncProcessor extends WorkerHost {
     super();
   }
 
-  async process(job: Job): Promise<any> {
+  async process(job: Job) {
     this.logger.debug('Processing');
     const {
       data: { path = this.configService.get('CSV_URL'), batchSize = this.configService.get('BATCH_SIZE') },
