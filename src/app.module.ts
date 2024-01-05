@@ -1,6 +1,8 @@
 import { ConfigModule, ConfigService, Environment } from '@libs/config';
 import { Module } from '@nestjs/common';
 import { LoggerModule } from 'nestjs-pino';
+import { SyncModule } from './modules/sync/sync.module';
+import { CsvReaderService } from './modules/sync/csv-reader.service';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { LoggerModule } from 'nestjs-pino';
         },
       }),
     }),
+    SyncModule,
   ],
+  providers: [CsvReaderService],
 })
 export class AppModule {}

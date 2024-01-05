@@ -8,6 +8,11 @@ export const ConfigVariablesSchema = Joi.object<ConfigVariables>({
   TZ: Joi.string().default('UTC'),
   APP_PORT: Joi.number().default(3000),
   LOG_LEVEL: Joi.string().default('debug'),
+  REDIS_HOST: Joi.string().default('localhost'),
+  REDIS_PORT: Joi.number().default(6379),
+  REDIS_PASSWORD: Joi.string().default(''),
+  CSV_URL: Joi.string().required(),
+  BATCH_SIZE: Joi.number().default(100),
 }).options({
   stripUnknown: true,
   abortEarly: true,
