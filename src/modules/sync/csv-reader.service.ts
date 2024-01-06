@@ -29,6 +29,7 @@ export class CsvReaderService {
     } catch (error) {
       stream.destroy();
       this.logger.error(`Failed to read CSV from URL: ${path}`);
+      this.logger.error(error);
 
       return null;
     }
