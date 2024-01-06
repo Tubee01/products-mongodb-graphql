@@ -13,15 +13,13 @@ Make sure you have the following installed:
 ## Getting Started
 
 1. Clone this repository
-
 2. Install dependencies
 
    ```bash
    pnpm install
    ```
-
 3. Set the environment variables
-Create a .env file based on the provided .example.env file and adjust the values accordingly.
+   Create a .env file based on the provided [.example.env](./.example.env) file and adjust the values accordingly.
 
    ```bash
    cp .example.env .env
@@ -37,8 +35,7 @@ Create a .env file based on the provided .example.env file and adjust the values
 
    ```bash
    pnpm dev:compose
-    ```
-
+   ```
 2. Run the following to start the API
 
    ```bash
@@ -59,4 +56,12 @@ Create a .env file based on the provided .example.env file and adjust the values
 
    ```bash
    pnpm prod:compose
-    ```
+   ```
+
+### Database visualization
+
+(Must change the DATABASE_URL in .env file, part of the host to localhost)
+
+```bash
+npx prisma studio
+```
