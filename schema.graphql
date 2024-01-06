@@ -1,0 +1,48 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Product {
+  id: ID!
+  name: String!
+  vintage: String!
+  producerId: String!
+  producer: ProducerWithoutRelation!
+}
+
+type ProducerWithoutRelation {
+  id: String!
+  name: String!
+  country: String!
+  region: String!
+}
+
+type ProductWithoutRelation {
+  id: ID!
+  name: String!
+  vintage: String!
+  producerId: String!
+}
+
+type Query {
+  getById(id: String!): Product!
+  getByProducerId(producerId: String!): [ProductWithoutRelation!]!
+}
+
+type Mutation {
+  createManyProducts(data: [CreateProductInput!]!): Boolean!
+  updateProduct(id: String!, data: UpdateProductInput!): Product!
+  deleteProduct(id: String!): Boolean!
+}
+
+input CreateProductInput {
+  name: String!
+  vintage: String!
+  producerId: String!
+}
+
+input UpdateProductInput {
+  name: String
+  vintage: String
+  producerId: String
+}

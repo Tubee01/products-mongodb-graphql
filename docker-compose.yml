@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  database:
+    image: 'bitnami/mongodb:latest'
+    environment:
+      MONGODB_ADVERTISED_HOSTNAME: ${MONGO_HOST}
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_ROOT_USER: ${MONGO_ROOT_USERNAME}
+      MONGODB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+      MONGODB_DATABASE: ${MONGO_DB}
+      MONGODB_REPLICA_SET_KEY: ${MONGO_REPLICA_SET_KEY}
+
+    ports:
+      - ${MONGO_PORT}:27017
+    volumes:
+      - ./data:/bitnami/mongodb/data
+  redis:
+    image: redis:alpine
+    ports:
+      - '${REDIS_PORT}:6379'
+
+    command: >
+      --requirepass ${REDIS_PASSWORD}
