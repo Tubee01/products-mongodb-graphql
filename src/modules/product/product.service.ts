@@ -5,7 +5,7 @@ import { UpdateProductInput } from './dtos/update-product.input';
 
 @Injectable()
 export class ProductService {
-  constructor(private readonly prismaService: PrismaService) { }
+  constructor(private readonly prismaService: PrismaService) {}
 
   async getById(id: string) {
     const product = await this.prismaService.product.findUnique({
