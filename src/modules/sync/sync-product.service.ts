@@ -56,7 +56,7 @@ export class SyncProductService {
         const producer = this.mapRowToProducer(row);
 
         if (!producer.name) {
-          this.logger.debug(`Producer name is empty: ${row['Product Name']}`);
+          this.logger.warn(`Producer name is empty: ${row['Product Name']}`);
           return;
         }
 
