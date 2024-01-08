@@ -19,7 +19,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "dev:compose": "docker-compose up -d",
-    "prod:compose": "docker-compose -f docker-compose.prod.yml -f docker-compose.yml up -d"
+    "prod:compose": "docker-compose -f docker-compose.prod.yml -f docker-compose.yml up -d",
+    "prod:down": "docker-compose -f docker-compose.prod.yml -f docker-compose.yml down"
   },
   "dependencies": {
     "@graphql-yoga/nestjs": "^3.1.1",
@@ -31,7 +32,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@prisma/client": "^5.7.1",
     "csv-parser": "^3.0.0",
-    "bullmq": "^5.1.1",
+    "bullmq": "^4.0.0",
     "graphql": "^16.8.1",
     "graphql-yoga": "^5.1.1",
     "joi": "^17.11.0",
@@ -68,9 +69,7 @@
     "typescript": "^5.1.3"
   },
   "engines": {
-    "node": ">=20",
-    "npm": "use pnpm",
-    "pnpm": ">=8"
+    "node": ">=18"
   },
   "jest": {
     "moduleFileExtensions": [
