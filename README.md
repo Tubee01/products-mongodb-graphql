@@ -65,3 +65,7 @@ Make sure you have the following installed:
 ```bash
 npx prisma studio
 ```
+
+### Additional information
+
+Csv sync endpoint available at: HOST:PORT/sync
